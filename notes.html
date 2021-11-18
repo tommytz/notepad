@@ -7,11 +7,10 @@
   </head>
   <body>
     <input type="text" id="user-text" />
-    <button id="new-note" onclick="createNote()">Add new note</button>
+    <button id="new-note" onclick="userNote()">Add new note</button>
     <button id="save" onclick="fetchToServer()">Save notes</button>
-    <div id="container">
-      <script src="generateNotes.js"></script>
-    </div>
+    <div id="container" class="container"></div>
+    <script src="generateNotes.js"></script>
     <script src="buttonScripts.js"></script>
   </body>
 </html>
