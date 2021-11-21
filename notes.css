@@ -1,4 +1,38 @@
 .container {
-  width: 200px;
+  width: 400px;
+}
+
+.note {
+  margin: 5px;
+  padding: 5px;
   background-color: palegoldenrod;
+  position: relative;
+  display: inline-block;
+}
+
+.note-text {
+  background-color: transparent;
+  border: none;
+}
+
+.note .close-button { 
+  background-color: transparent;
+  background-image: url(./close.png);
+  background-size: cover;
+  border: none;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: none;
+}
+
+.close-button:hover {
+  background-image: url(./close_black.png);
+}
+
+.note:hover .close-button {
+  display: block;
+}
 }
