@@ -1,5 +1,6 @@
 const input = document.getElementById("user-text");
 const container = document.getElementById("container");
+const draggables = document.querySelectorAll(".note");
 
 function userNote() {
   const message = `New note "${input.value}" created.`;
@@ -14,21 +15,31 @@ function createNote(str) {
   topBar.className = "top-bar";
   let noteText = createTextArea(str);
   let close = createCloseButton();
+  note.append(topBar, close, noteText);
 
   note.draggable = "true";
-  note.ondragstart = function (event) {
-    if (event.target instanceof HTMLElement) {
-      // use the element's data-value="" attribute as the value to be moving:
-      event.dataTransfer.setData("text/plain", event.target.dataset.value);
-      event.effectAllowed = "move"; // only allow moves
-      console.log(event.target.dataset.value);
-    } else {
-      event.preventDefault(); // don't allow selection to be dragged
-    }
-  };
+  note.addEventListener("dragstart", function () {
+    console.log("We dragging out here!");
+    note.classList.add("dragging");
+  });
+  note.addEventListener("dragend", function () {
+    console.log("Drag event over.");
+    getDragAfterElement();
+    note.classList.remove("dragging");
+  });
+  note.addEventListener("dragover", function (e) {
+    e.preventDefault();
+    const draggable = document.querySelector(".dragging");
+  });
 
-  note.append(topBar, close, noteText);
   container.append(note);
+}
+
+function getDragAfterElement() {
+  const draggableElements = [
+    ...document.querySelectorAll(".note:not(.dragging)"),
+  ];
+  console.log(draggableElements);
 }
 
 function createCloseButton() {

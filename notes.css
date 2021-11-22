@@ -1,14 +1,15 @@
 .container {
-  width: 600px;
-  height: 400px;
+  width: 400px;
+  height: 800px;
   border: black 10px solid;
 }
 
 .note {
-  display: inline-block;
+  display: block;
   margin: 5px;
   background-color: palegoldenrod;
-  position: absolute;
+  position: relative;
+  cursor: move;
 }
 
 .top-bar {
@@ -22,7 +23,7 @@
   border: none;
 }
 
-.note .close-button {
+.close-button {
   background-color: transparent;
   background-image: url(./close.png);
   background-size: cover;
@@ -43,4 +44,8 @@
 
 .note:hover .close-button {
   display: block;
+}
+
+.dragging {
+  border: 5px red dashed;
 }
