@@ -1,13 +1,20 @@
 .container {
-  width: 400px;
+  width: 600px;
+  height: 400px;
+  border: black 10px solid;
 }
 
 .note {
-  margin: 5px;
-  padding: 5px;
-  background-color: palegoldenrod;
-  position: relative;
   display: inline-block;
+  margin: 5px;
+  background-color: palegoldenrod;
+  position: absolute;
+}
+
+.top-bar {
+  width: auto;
+  height: 30px;
+  background-color: goldenrod;
 }
 
 .note-text {
@@ -15,16 +22,18 @@
   border: none;
 }
 
-.note .close-button { 
+.note .close-button {
   background-color: transparent;
   background-image: url(./close.png);
   background-size: cover;
   border: none;
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   position: absolute;
   top: 0;
   right: 0;
+  margin-top: 2px;
+  margin-right: 2px;
   display: none;
 }
 
@@ -34,5 +43,4 @@
 
 .note:hover .close-button {
   display: block;
-}
 }
