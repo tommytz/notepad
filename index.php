@@ -9,13 +9,12 @@
     <div id="input-container">
       <div id="title-input" class="user-input" placeholder="Title" contenteditable="true"></div>
       <div id="body-input" class="user-input" placeholder="Take a note..." contenteditable="true"></div>
-      <div>
-        <button id="add">Add</button>
-      </div>
+      <button id="add">Add</button>
     </div>
     <br/>
     <div id="notes-container">
 
+    <!-- Create notes on page load -->
     <?php
     $title = "Hello title";
     $message = "Hello world";  
@@ -23,7 +22,8 @@
       echo "<div class='note'><div>" . $title . "</div><div>" . $message . "</div></div>";
     }
     ?>
-    
+    <!-- Need to make this something more substantial -->
+
     </div>
     <script src="script.js"></script>
   </body>

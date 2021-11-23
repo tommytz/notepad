@@ -19,6 +19,8 @@ body {
   font-size: 18px;
   font-weight: 500;
   color: #4d4d4d;
+  cursor: text;
+  display: none;
 }
 
 #body-input {
@@ -42,10 +44,12 @@ body {
   border-radius: 3px;
   padding: 5px 15px 5px 15px;
   margin-left: auto;
+  margin-right: 10px;
   cursor: pointer;
   font-family: 'Roboto',arial,sans-serif;
   font-weight: 550;
   color: #666666;
+  display: none;
 }
 
 #add:hover {
@@ -73,6 +77,5 @@ body {
 }
 
 .note:hover {
-  /* box-shadow: 1px 1px 2px 0px #d9d9d9, -1px 1px 2px 0px #d9d9d9; */
   box-shadow: 0 2px 8px #d9d9d9;
 }
