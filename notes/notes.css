@@ -21,6 +21,7 @@
 .note-text {
   background-color: transparent;
   border: none;
+  resize: none;
 }
 
 .close-button {
