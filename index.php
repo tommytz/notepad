@@ -16,13 +16,17 @@
 
     <!-- Create notes on page load -->
     <?php
-    $title = "Hello title";
-    $message = "Hello world";  
-    for($i = 0; $i < 5; $i++){
-      echo "<div class='note'><div>" . $title . "</div><div>" . $message . "</div></div>";
+    $url = "note_data.json";
+    $data = file_get_contents($url);
+    $notes = json_decode($data);
+    foreach ($notes as $note) {
+      echo 
+      "<div class='note'>
+        <div class='note-title'>" . $note[0] . "</div>
+        <div class='note-body'>" . $note[1] . "</div>
+      </div>";
     }
     ?>
-    <!-- Need to make this something more substantial -->
 
     </div>
     <script src="script.js"></script>
