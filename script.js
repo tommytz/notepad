@@ -1,57 +1,60 @@
-let input_container = document.getElementById("input-container");
-let title_input = document.getElementById("title-input");
-let body_input = document.getElementById("body-input");
-let add_btn = document.getElementById("add");
-let notes_container = document.getElementById("notes-container");
+let inputContainer = document.getElementById("input-container");
+let titleInput = document.getElementById("title-input");
+let bodyInput = document.getElementById("body-input");
+let addButton = document.getElementById("add");
+let notesContainer = document.getElementById("notes-container");
+let deleteButtons = document.querySelectorAll(".delete");
 
-add_btn.onclick = function () {
-  createNote(title_input.textContent, body_input.textContent);
-};
+addButton.addEventListener("click", function () {
+  createNote(titleInput.textContent, bodyInput.textContent);
+});
+
+deleteButtons.forEach(element => {
+  element.addEventListener("click", function () {
+    this.parentElement.remove();
+    console.log("Note deleted.");
+    saveToServer();
+  });
+})
+
+window.addEventListener('click', function (event) {
+  if (!inputContainer.contains(event.target)) {
+    titleInput.style.display = "none";
+    addButton.style.display = "none";
+  } else {
+    titleInput.style.display = "block";
+    addButton.style.display = "block";
+  }
+});
 
 function createNote(title, body) {
   let note = document.createElement("div");
   note.className = "note";
-  let note_title = document.createElement("div");
-  note_title.className = "note-title";
-  note_title.textContent = title;
-  let note_body = document.createElement("div");
-  note_body.className = "note-body";
-  note_body.textContent = body;
-  note.append(note_title, note_body);
-  notes_container.append(note);
+  let deleteBtn = document.createElement("img");
+  deleteBtn.className = "delete";
+  deleteBtn.src = "https://img.icons8.com/material-outlined/24/000000/delete-sign.png";
+  let noteTitle = document.createElement("div");
+  noteTitle.className = "note-title";
+  noteTitle.textContent = title;
+  let noteBody = document.createElement("div");
+  noteBody.className = "note-body";
+  noteBody.textContent = body;
+  note.append(deleteBtn, noteTitle, noteBody);
+  notesContainer.append(note);
   saveToServer();
 }
 
-window.addEventListener('click', function (event) {
-  if (!input_container.contains(event.target)) {
-    hide();
-  } else {
-    show();
-  }
-});
-
-function show() {
-  title_input.style.display = "block";
-  add_btn.style.display = "block";
-  console.log("showing rest of input area");
-}
-
-function hide() {
-  title_input.style.display = "none";
-  add_btn.style.display = "none";
-  console.log("hiding rest of input area");
-}
-
 function noteContentArray() {
-  let elementArray = [];
-  for (var element of notes_container.children) {
-    let contentArray = [];
-    for (var content of element.children) {
-      contentArray.push(content.textContent);
-    }
-    elementArray.push(contentArray);
+  let contentArray = [];
+  var notes = document.getElementsByClassName("note");
+  for (var note of notes) {
+    var noteContent = {
+      title: note.querySelector(".note-title").textContent,
+      body: note.querySelector(".note-body").textContent
+    };
+    contentArray.push(noteContent);
   }
-  return elementArray;
+  return contentArray;
 }
 
 function saveToServer() {

@@ -22,8 +22,9 @@
     foreach ($notes as $note) {
       echo 
       "<div class='note'>
-        <div class='note-title'>" . $note[0] . "</div>
-        <div class='note-body'>" . $note[1] . "</div>
+        <img class='delete' src='https://img.icons8.com/material-outlined/24/000000/delete-sign.png'/>
+        <div class='note-title'>" . $note->title . "</div>
+        <div class='note-body'>" . $note->body . "</div>
       </div>";
     }
     ?>
