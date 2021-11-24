@@ -20,7 +20,7 @@ deleteButtons.forEach(element => {
     console.log("Note deleted.");
     saveToServer();
   });
-})
+});
 
 window.addEventListener('click', function (event) {
   if (!inputContainer.contains(event.target)) {
@@ -75,5 +75,5 @@ function saveToServer() {
     },
     body: JSON.stringify(noteContentArray()),
   });
-  console.log("Message saved to server.");
+  console.log("Message sent to server.");
 }
