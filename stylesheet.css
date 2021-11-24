@@ -67,7 +67,7 @@ body {
   border: #e6e6e6 2px solid;
   border-radius: 10px;
   width: 400px;
-  height: 200px;
+  height: fit-content;
   margin: 10px;
   transition: box-shadow 0.4s;
   padding: 10px;
@@ -80,6 +80,8 @@ body {
 
 .note-title {
   color: black;
+  width: 95%;
+  left: 0;
 }
 
 .note-body {

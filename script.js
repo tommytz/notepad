@@ -4,6 +4,11 @@ let bodyInput = document.getElementById("body-input");
 let addButton = document.getElementById("add");
 let notesContainer = document.getElementById("notes-container");
 let deleteButtons = document.querySelectorAll(".delete");
+let notes = document.querySelectorAll(".note");
+
+notes.forEach(element => {
+  element.draggable = "true";
+});
 
 addButton.addEventListener("click", function () {
   createNote(titleInput.textContent, bodyInput.textContent);
@@ -33,6 +38,11 @@ function createNote(title, body) {
   let deleteBtn = document.createElement("img");
   deleteBtn.className = "delete";
   deleteBtn.src = "https://img.icons8.com/material-outlined/24/000000/delete-sign.png";
+  deleteBtn.addEventListener("click", function () {
+    this.parentElement.remove();
+    console.log("Note deleted.");
+    saveToServer();
+  });
   let noteTitle = document.createElement("div");
   noteTitle.className = "note-title";
   noteTitle.textContent = title;
