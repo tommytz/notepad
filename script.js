@@ -1,9 +1,9 @@
-let inputContainer = document.getElementById("input-container");
+let input = document.getElementById("input");
 let titleInput = document.getElementById("title-input");
 let bodyInput = document.getElementById("body-input");
 let addButton = document.getElementById("add");
-let notesContainer = document.getElementById("notes-container");
-let deleteButtons = document.querySelectorAll(".delete");
+// let container = document.getElementById("container");
+// let deleteButtons = document.querySelectorAll(".delete");
 let notes = document.querySelectorAll(".note");
 
 notes.forEach(element => {
@@ -14,16 +14,16 @@ addButton.addEventListener("click", function () {
   createNote(titleInput.textContent, bodyInput.textContent);
 });
 
-deleteButtons.forEach(element => {
-  element.addEventListener("click", function () {
-    this.parentElement.remove();
-    console.log("Note deleted.");
-    saveToServer();
-  });
-});
+// deleteButtons.forEach(element => {
+//   element.addEventListener("click", function () {
+//     this.parentElement.remove();
+//     console.log("Note deleted.");
+//     saveToServer();
+//   });
+// });
 
 window.addEventListener('click', function (event) {
-  if (!inputContainer.contains(event.target)) {
+  if (!input.contains(event.target)) {
     titleInput.style.display = "none";
     addButton.style.display = "none";
   } else {
@@ -34,23 +34,23 @@ window.addEventListener('click', function (event) {
 
 function createNote(title, body) {
   let note = document.createElement("div");
-  note.className = "note";
-  let deleteBtn = document.createElement("img");
-  deleteBtn.className = "delete";
-  deleteBtn.src = "https://img.icons8.com/material-outlined/24/000000/delete-sign.png";
-  deleteBtn.addEventListener("click", function () {
-    this.parentElement.remove();
-    console.log("Note deleted.");
-    saveToServer();
-  });
+  // note.className = "note";
+  // let deleteBtn = document.createElement("img");
+  // deleteBtn.className = "delete";
+  // deleteBtn.src = "https://img.icons8.com/material-outlined/24/000000/delete-sign.png";
+  // deleteBtn.addEventListener("click", function () {
+  //   this.parentElement.remove();
+  //   console.log("Note deleted.");
+  //   saveToServer();
+  // });
   let noteTitle = document.createElement("div");
   noteTitle.className = "note-title";
   noteTitle.textContent = title;
   let noteBody = document.createElement("div");
   noteBody.className = "note-body";
   noteBody.textContent = body;
-  note.append(deleteBtn, noteTitle, noteBody);
-  notesContainer.append(note);
+  note.append(noteTitle, noteBody);
+  container.append(note);
   saveToServer();
 }
 

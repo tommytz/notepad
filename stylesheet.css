@@ -1,9 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Roboto", arial, sans-serif;
   color: #666666;
 }
 
-#input-container {
+#input {
   border: black 1px solid transparent;
   border-radius: 10px;
   padding: 5px;
@@ -56,20 +62,37 @@ body {
   background-color: #f2f2f2;
 }
 
-.grid {
-  display: grid;
-  grid-gap: 5px;
-  grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
-  grid-auto-rows: 200px;
+.container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  padding: 100px 2vw;
+}
+
+.column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.post {
+  position:relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+img {
+  width: 100%;
 }
 
 .note {
-  box-sizing: border-box;
   border: #e6e6e6 2px solid;
   border-radius: 10px;
   transition: box-shadow 0.4s;
   padding: 10px;
-  position: relative;
+  position: relative;;
 }
 
 .note:hover {
