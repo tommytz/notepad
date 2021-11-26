@@ -6,6 +6,10 @@ const container = document.getElementById("container");
 const deleteButtons = document.querySelectorAll(".delete");
 const notes = document.querySelectorAll(".note");
 
+notes.forEach(element => {
+  element.draggable = "true";
+});
+
 const grid = new Packery(container, {
   itemSelector: '.note',
   gutter: 10

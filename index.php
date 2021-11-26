@@ -15,7 +15,7 @@
   </div>
   <br />
   <div id="container">
-    <!-- Create notes on page load -->
+    <!-- Dynamically create notes on page load -->
     <?php
     $url = "note_data.json";
     $data = file_get_contents($url);
@@ -29,6 +29,7 @@
       </div>";
     }
     ?>
+    <!-- Thanks for that PHP -->
   </div>
   <script src="https://unpkg.com/packery@2/dist/packery.pkgd.js"></script>
   <script src="script.js"></script>
