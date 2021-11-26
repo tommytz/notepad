@@ -15,9 +15,21 @@
   </div>
   <br />
   <div class="container">
+    <!-- Create notes on page load -->
+    <?php
+    $url = "note_data.json";
+    $data = file_get_contents($url);
+    $notes = json_decode($data);
+    foreach ($notes as $note) {
+      echo
+      "<div class='note'>
+          <img class='delete' src='https://img.icons8.com/material-outlined/24/000000/delete-sign.png'/>
+          <div class='note-title'>" . $note->title . "</div>
+          <div class='note-body'>" . $note->body . "</div>
+      </div>";
+    }
+    ?>
   </div>
-  <script src="items.js"></script>
-  <script src="app.js"></script>
   <script src="script.js"></script>
 </body>
 
