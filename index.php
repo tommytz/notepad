@@ -14,7 +14,7 @@
     <button id="add">Add</button>
   </div>
   <br />
-  <div class="container">
+  <div id="container">
     <!-- Create notes on page load -->
     <?php
     $url = "note_data.json";
@@ -30,6 +30,7 @@
     }
     ?>
   </div>
+  <script src="https://unpkg.com/packery@2/dist/packery.pkgd.js"></script>
   <script src="script.js"></script>
 </body>
 

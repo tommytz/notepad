@@ -55,7 +55,7 @@
   background-color: #f2f2f2;
 }
 
-.container {
+#container {
   position: relative;
 }
 
@@ -65,10 +65,12 @@
   transition: box-shadow 0.4s;
   padding: 10px;
   position: relative;
+  width: 250px;
+  height: fit-content;
 }
 
 .note:hover {
-  box-shadow: 0 2px 8px #d9d9d9;
+  box-shadow: 0 4px 8px #cccccc;
 }
 
 .note-title {

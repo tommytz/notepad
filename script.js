@@ -1,25 +1,29 @@
-let input = document.getElementById("input");
-let titleInput = document.getElementById("title-input");
-let bodyInput = document.getElementById("body-input");
-let addButton = document.getElementById("add");
-let container = document.querySelector(".container");
-let deleteButtons = document.querySelectorAll(".delete");
-let notes = document.querySelectorAll(".note");
+const input = document.getElementById("input");
+const titleInput = document.getElementById("title-input");
+const bodyInput = document.getElementById("body-input");
+const addButton = document.getElementById("add");
+const container = document.getElementById("container");
+const deleteButtons = document.querySelectorAll(".delete");
+const notes = document.querySelectorAll(".note");
 
-notes.forEach(element => {
-  element.draggable = "true";
+const grid = new Packery(container, {
+  itemSelector: '.note',
+  gutter: 10
 });
 
 addButton.addEventListener("click", function () {
   createNote(titleInput.textContent, bodyInput.textContent);
 });
 
+function removeNote() {
+  grid.remove(this.parentElement);
+  grid.layout();
+  console.log("Note deleted.");
+  saveToServer();
+}
+
 deleteButtons.forEach(element => {
-  element.addEventListener("click", function () {
-    this.parentElement.remove();
-    console.log("Note deleted.");
-    saveToServer();
-  });
+  element.addEventListener("click", removeNote);
 });
 
 window.addEventListener('click', function (event) {
@@ -38,11 +42,7 @@ function createNote(title, body) {
   let deleteBtn = document.createElement("img");
   deleteBtn.className = "delete";
   deleteBtn.src = "https://img.icons8.com/material-outlined/24/000000/delete-sign.png";
-  deleteBtn.addEventListener("click", function () {
-    this.parentElement.remove();
-    console.log("Note deleted.");
-    saveToServer();
-  });
+  deleteBtn.addEventListener("click", removeNote);
   let noteTitle = document.createElement("div");
   noteTitle.className = "note-title";
   noteTitle.textContent = title;
@@ -51,6 +51,7 @@ function createNote(title, body) {
   noteBody.textContent = body;
   note.append(noteTitle, noteBody);
   container.append(note);
+  grid.appended(note);
   saveToServer();
 }
 
