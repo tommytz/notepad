@@ -32,6 +32,7 @@
     <!-- Thanks for that PHP -->
   </div>
   <script src="https://unpkg.com/packery@2/dist/packery.pkgd.js"></script>
+  <script src="https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.min.js"></script>
   <script src="script.js"></script>
 </body>
 

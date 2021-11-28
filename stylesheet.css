@@ -57,6 +57,7 @@
 
 #container {
   position: relative;
+  height: 100%;
 }
 
 .note {
@@ -71,6 +72,14 @@
 
 .note:hover {
   box-shadow: 0 4px 8px #cccccc;
+}
+
+.note.is-dragging,
+.note.is-positioning-post-drag {
+  background: #ffffff;
+  z-index: 2;
+  border: #e6e6e6 2px solid;
+  box-shadow: 2px 2px 8px 2px #666666;
 }
 
 .note-title {
