@@ -5,7 +5,21 @@ const addButton = document.getElementById("add");
 const container = document.getElementById("container");
 const deleteButtons = document.querySelectorAll(".delete");
 const notes = document.querySelectorAll(".note");
+const dimmer = document.getElementById("dimmer");
 const draggableElements = [];
+
+const modal = document.getElementById("myModal");
+const titleEdit = document.getElementById("title-edit");
+const bodyEdit = document.getElementById("body-edit");
+const closeEdit = document.getElementById("close");
+closeEdit.addEventListener("click", function () {
+  selectedNote.querySelector(".note-title").textContent = titleEdit.textContent;
+  selectedNote.querySelector(".note-body").textContent = bodyEdit.textContent;
+  selectedNote = null;
+  modal.style.display = "none";
+  saveToServer();
+});
+var selectedNote;
 
 const grid = new Packery(container, {
   itemSelector: '.note',
@@ -17,14 +31,34 @@ grid.on('dragItemPositioned', function (draggedItem) {
   saveToServer();
 });
 
+grid.on('removeComplete', function (removedItems) {
+  grid.layout();
+});
+
 notes.forEach(element => {
   let draggable = new Draggabilly(element, {});
+  draggable.on('staticClick', function (event, pointer) {
+    for (let note of notes) {
+      if (note.contains(pointer.target) && pointer.target.className != "delete") {
+        modal.style.display = "block";
+        titleEdit.textContent = note.querySelector(".note-title").textContent;
+        bodyEdit.textContent = note.querySelector(".note-body").textContent;
+        selectedNote = note;
+      }
+    }
+  });
   grid.bindDraggabillyEvents(draggable);
   draggableElements.push(draggable);
 });
 
+function editBox() {
+
+}
+
 addButton.addEventListener("click", function () {
   createNote(titleInput.textContent, bodyInput.textContent);
+  titleInput.textContent = "";
+  bodyInput.textContent = "";
 });
 
 function removeNote() {
@@ -58,6 +92,16 @@ function createNote(title, body) {
   noteBody.textContent = body;
   note.append(createDeleteBtn(), noteTitle, noteBody);
   let draggable = new Draggabilly(note, {});
+  draggable.on('staticClick', function (event, pointer) {
+    for (let note of grid.getItemElements()) {
+      if (note.contains(pointer.target) && pointer.target.className != "delete") {
+        modal.style.display = "block";
+        titleEdit.textContent = note.querySelector(".note-title").textContent;
+        bodyEdit.textContent = note.querySelector(".note-body").textContent;
+        selectedNote = note;
+      }
+    }
+  });
   grid.bindDraggabillyEvents(draggable);
   draggableElements.push(draggable);
   container.append(note);
@@ -66,14 +110,14 @@ function createNote(title, body) {
 }
 
 function createDeleteBtn() {
-  let deleteBtn = document.createElement("img");
+  let deleteBtn = document.createElement("div");
+  deleteBtn.innerHTML = "&times;";
   deleteBtn.className = "delete";
-  deleteBtn.src = "https://img.icons8.com/material-outlined/24/000000/delete-sign.png";
   deleteBtn.addEventListener("click", removeNote);
   return deleteBtn;
 }
 
-function noteContentArray() {
+function getNotesInfo() {
   let contentArray = [];
   let notes = grid.getItemElements();
   for (var note of notes) {
@@ -92,7 +136,7 @@ function saveToServer() {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(noteContentArray()),
+    body: JSON.stringify(getNotesInfo()),
   });
   console.log("Message sent to server.");
 }
