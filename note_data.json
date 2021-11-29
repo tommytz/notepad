@@ -1,34 +1,26 @@
 [
   {
-    "title": "Networking",
-    "body": "What?"
+    "title": "Welcome to a simple note-taking app",
+    "body": "Click on the \"Take a note...\" to start writing a new entry!"
   },
   {
     "title": "How to edit notes",
     "body": "You can click on notes to edit them. Don't forget to click \"Done\" to exit out of the editor."
   },
   {
-    "title": "Persistence",
-    "body": "The notes you make are saved on the server, and also are deleted from the server. If you reload the page they will still be there (or not if you deleted them!)"
-  },
-  {
-    "title": "Welcome to a simple note-taking app",
-    "body": "Click on the \"Take a note...\" to start writing a new entry!"
+    "title": "Moving notes around",
+    "body": "You can drag and move notes by pressing and holding down the mouse button"
   },
   {
     "title": "Order",
     "body": "After moving notes around they \"should\" stay in the horizontal order you have left them in. However, this feature is a little janky."
   },
   {
-    "title": "testing init",
-    "body": "hey Thomas"
+    "title": "Persistence",
+    "body": "The notes you make are saved on the server, and also are deleted from the server. If you reload the page they will still be there (or not if you deleted them!)"
   },
   {
     "title": "Deleting notes",
-    "body": "Notes can be deleted by pressing the \"x\" in the top-right corner. However, be warned. Once they are deleted these notes are lost forever! There is no trash/recycling bin to get them back from. I love editting!"
-  },
-  {
-    "title": "Moving notes around",
-    "body": "You can drag and move notes by pressing and holding down the mouse button"
+    "body": "Notes can be deleted by pressing the \"x\" in the top-right corner. However, be warned. Once they are deleted these notes are lost forever! There is no trash/recycling bin to get them back from."
   }
 ]
